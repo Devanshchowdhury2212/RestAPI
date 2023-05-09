@@ -3,22 +3,6 @@ from typing import Optional
 from pydantic import BaseModel, EmailStr, NoneStr
 
 
-class PostBase(BaseModel):
-    title: str
-    content: str | None = None
-    published: bool = True
-    # id:int
-    # created:Timestamp  
-
-class PostCreate(PostBase):
-    pass
-
-class Post(PostBase):
-    id:int
-    created:datetime
-    class Config:
-        orm_mode = True
-
 class UserCreate(BaseModel):
     email:EmailStr
     password:str
@@ -39,3 +23,21 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     id:Optional[str]|None
+    
+class PostBase(BaseModel):
+    title: str
+    content: str | None = None
+    published: bool = True
+    # id:int
+    # created:Timestamp  
+
+class PostCreate(PostBase):
+    pass
+
+class Post(PostBase):
+    id:int
+    created:datetime
+    user_id:int
+    user:User_Out
+    class Config:
+        orm_mode = True

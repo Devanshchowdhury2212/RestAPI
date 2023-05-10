@@ -3,18 +3,20 @@ from .. import schema, models, database,oauth2
 from typing import Optional,List
 from fastapi import FastAPI, HTTPException,Depends,Response,status,APIRouter
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 
 
 router = APIRouter(prefix='/posts',tags=['Posts'])
 
-@router.get("",response_model=List[schema.Post])
+@router.get("",response_model=List[schema.PostDetail])
 def get_posts(db: Session = Depends(database.get_db),current_user:int = Depends(oauth2.get_current_user)
-              ,limit:int = 3,offset:int = 0):
+              ,limit:int = 3,offset:int = 0,search:Optional[str] = ""):#
     # cursor.execute("""SELECT * FROM posts""")
     # posts = cursor.fetchall()
-    posts = db.query(models.Posts).limit(limit).offset(offset).all()#.filter(models.Posts.user_id == current_user.id)
+    posts = db.query(models.Posts,func.count(models.Votes.posts_id).label('votes')).join(models.Votes,models.Posts.id == models.Votes.posts_id,isouter=True).group_by(
+        models.Posts.id).filter(models.Posts.title.contains(search)).limit(limit).offset(offset).all()
     return posts
-
+     
 @router.post('',status_code=status.HTTP_201_CREATED,response_model=schema.Post)
 def create_posts(post:schema.PostCreate,db: Session = Depends(database.get_db),current_user:int = Depends(oauth2.get_current_user)):
     # cursor.execute(f"""INSERT INTO posts(title,content,published) VALUES (%s,%s,%s) returning * """,

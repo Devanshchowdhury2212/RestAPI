@@ -1,6 +1,8 @@
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, EmailStr, NoneStr
+from sqlalchemy import Boolean
+from pydantic.types import conint
 
 
 class UserCreate(BaseModel):
@@ -41,3 +43,11 @@ class Post(PostBase):
     user:User_Out
     class Config:
         orm_mode = True
+
+class votepost(BaseModel):
+    post_id:int
+    dir: conint(le=1)
+
+class PostDetail(BaseModel):
+    Posts:Post
+    votes:int

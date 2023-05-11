@@ -46,7 +46,7 @@ class Post(PostBase):
 
 class votepost(BaseModel):
     post_id:int
-    dir: conint(le=1)
+    dir: conint(le=1) # type: ignore
 
 class PostDetail(BaseModel):
     Posts:Post

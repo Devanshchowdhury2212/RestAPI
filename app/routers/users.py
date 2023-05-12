@@ -9,6 +9,8 @@ router = APIRouter(prefix='/users',tags=['Users'])
 @router.post('',response_model=schema.User_Out)
 def create_user(user:schema.UserCreate,db: Session = Depends(database.get_db)):
     user.password = utils.get_hash(user.password)
+    if db.query(models.User).filter(models.User.email == user.email).first():
+        raise HTTPException(status_code=status.HTTP_208_ALREADY_REPORTED,detail="USER ALREADY Registered")
     new_user = models.User(**user.dict())
     db.add(new_user);db.commit();db.refresh(new_user)
     return new_user

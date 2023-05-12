@@ -10,10 +10,7 @@ models.Base.metadata.create_all(bind=engine) # Used by SQL alchemy now alchemy w
 app = FastAPI()
 
 origins = [
-    "http://www.google.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8000",
+    "http://localhost:8000"
 ]
 
 app.add_middleware(
@@ -32,4 +29,3 @@ def root():
     return {"message": "Welcome to RestfUL API .. \n Connected"}
 
 # uvicorn app.main:app --reload
-#eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNjgzNTcwNDYyfQ.vBj1_BkVBU7VrzqrPK1IWwdZgyUl8qAlT-Aoameb7Xc

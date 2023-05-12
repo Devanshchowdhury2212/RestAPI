@@ -5,7 +5,7 @@ from .routers import posts,users,auth,votes
 from .config import settings
 from fastapi.middleware.cors import CORSMiddleware
 
-# models.Base.metadata.create_all(bind=engine) # Used by SQL alchemy now alchemy will do it
+models.Base.metadata.create_all(bind=engine) # Used by SQL alchemy now alchemy will do it
 
 app = FastAPI()
 

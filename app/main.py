@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
+    "http://127.0.0.1:8000"
     
 ]
 

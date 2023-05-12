@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     secret_key:str
     algorithm:str
     ACCESS_TOKEN_EXPIRE_MINUTES:int
+    SQLALCHEMY_DB_URL:str
 
     class Config:
         env_file = '.env'

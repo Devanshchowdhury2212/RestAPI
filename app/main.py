@@ -10,10 +10,7 @@ models.Base.metadata.create_all(bind=engine) # Used by SQL alchemy now alchemy w
 app = FastAPI()
 
 origins = [
-    "http://www.google.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8000",
+    
 ]
 
 app.add_middleware(

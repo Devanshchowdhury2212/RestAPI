@@ -7,8 +7,6 @@ from .config import settings
 
 # SQLALCHEMY_DB_URL = "postgresql://<username>:<password>@<ip-address/hostname>/<database name>"
 # SQLALCHEMY_DB_URL = f"postgresql://{settings.database_username}:{settings.database_password}@{settings.DATABASE_HOSTNAME}:{settings.database_port}/{settings.database_name}"
-# SQLALCHEMY_DB_URL = f"postgresql://testdb_2dj9_user:zvprnD19uj3HvhQVZlGExw513GBgOJO8@dpg-checkue7avja5m9gunsg-a:5432/testdb_2dj9"
-# SQLALCHEMY_DB_URL = "postgres://testdb_2dj9_user:zvprnD19uj3HvhQVZlGExw513GBgOJO8@dpg-checkue7avja5m9gunsg-a.singapore-postgres.render.com/testdb_2dj9"
 SQLALCHEMY_DB_URL = f"postgresql://testdb_2dj9_user:zvprnD19uj3HvhQVZlGExw513GBgOJO8@dpg-checkue7avja5m9gunsg-a.singapore-postgres.render.com/testdb_2dj9"
 
 engine = create_engine(SQLALCHEMY_DB_URL)

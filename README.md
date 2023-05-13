@@ -42,7 +42,7 @@ This API consists of four distinct routes:
 | /login	|POST|	Authenticates the user by checking if the email and password provided in the user_cred parameter match those stored in the database. If they match, an access token is generated using oauth2.create_access_token and returned as a response. If they do not match, an HTTPException with status code 403 is raised, indicating that the credentials are invalid.|
 
 | 	Endpoint	 | 	HTTP Method	 | 	Description	 |
-| 	:-----:	 | 	:-----:	 | 	:-----:	 | |
+| 	:-----:	 | 	:-----:	 | 	:-----:	 | 
 |/posts |	GET	| Returns a list of all posts, including the count of votes for each post. Supports search query to filter posts by title.|
 |/posts |	POST	| Creates a new post with the provided title, content, and published status. The logged-in user's ID is automatically assigned as the post's user_id. Returns the newly created post.|
 |/posts/{id} |	GET	| Returns a specific post by ID, including the count of votes for the post. Raises a 404 error if the post with the given ID does not exist, or if the requesting user is not the author of the post.|
@@ -50,7 +50,7 @@ This API consists of four distinct routes:
 |/posts/{id} |	PUT	| Updates a specific post by ID with the provided title, content, and published status. Raises a 404 error if the post with the given ID does not exist, or if the requesting user is not the author of the post. Returns the updated post.|
 
 | 	Endpoint	 | 	HTTP Method	 | 	Description	 |
-| 	:-----:	 | 	:-----:	 | 	:-----:	 | |
+| 	:-----:	 | 	:-----:	 | 	:-----:	 | 
 |/votes	| POST |	This endpoint is used to vote on a post. It takes a JSON payload in the request body containing the ID of the post to be voted on and the direction of the vote (up or down). The user making the vote is authenticated via an access token. If the user has already voted on the post, a 208 Already Reported status code is returned. If the post does not exist, a 404 Not Found status code is returned. If the vote is successfully added to the database, a 201 Created status code is returned along with the newly created vote object in JSON format.|
 
 

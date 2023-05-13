@@ -3,3 +3,5 @@ venv/
 .vscode
 connect.txt
 .env
+dockerfile
+docker-compose.yml

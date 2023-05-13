@@ -75,8 +75,8 @@ The app requires some environment variables to be set. These can be set using a 
     -algorithm=${algorithm}
     -ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
     -SQLALCHEMY_DB_URL=${SQLALCHEMY_DB_URL} 
-SQLALCHEMY_DB_URL: the URL to your PostgreSQL database. Replace user, password, and dbname with your database credentials.
-SECRET_KEY: a secret key used for encrypting and decrypting JSON Web Tokens (JWTs).
+- SQLALCHEMY_DB_URL: the URL to your PostgreSQL database. Replace user, password, and dbname with your database credentials.
+- SECRET_KEY: a secret key used for encrypting and decrypting JSON Web Tokens (JWTs).
 
 ## Running the App
 To start the app, run:
